@@ -52,15 +52,17 @@ async def main():
 
     if st.button("Search Candidates"):
         results = await resumeAI.candidates_retriever_from_query(search_query)
+        resumeFiles = resumeAI.get_candidates_file_paths(results)
+
         print(resumeAI.get_candidates_file_paths(results))
 
-        st.session_state.search_results = results
+        st.session_state.search_results = resumeFiles
 
     st.subheader("Results")
     with st.expander("Matching Candidates", expanded=True):
         if 'search_results' in st.session_state:
-            for i, candidate in enumerate(list(set(st.session_state.search_results))):
-                st.write(candidate.metadata)
+            for i, candidate in enumerate(st.session_state.search_results):
+                st.write(candidate)
 
                 st.divider()
 

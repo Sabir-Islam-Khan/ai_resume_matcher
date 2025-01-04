@@ -214,7 +214,6 @@ class ResumeAI:
             ],
             condition=FilterCondition.OR
         )
-        print(f"> Inferred filters: {filters.json()}")
         retriever = self.llamaIndexCloud.as_retriever(
             retrieval_mode="chunks",
             metadata_filters=filters,
