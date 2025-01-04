@@ -40,7 +40,7 @@ class ResumeAI:
     llm = OpenAI(model='gpt-4o-mini')
 
     orgId: str = "9eea158a-7ba5-49e8-bff7-3c060289e5f6"
-    pipelineName: str = "resume_matching_v_2"
+    pipelineName: str = "resume_matching_v_3"
 
     openAIKey: str = os.getenv('OPENAI_API_KEY')
     llamaIndexKey: str = os.getenv('LLAMA_CLOUD_API_KEY')
