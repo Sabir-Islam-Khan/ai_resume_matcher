@@ -63,10 +63,10 @@ class ResumeAI:
 
         self.create_llamacloud_pipeline()
 
-    async def indexPdfFile(self, pdf_file: str):
+    async def indexPdfFile(self, pdf_file: str, file_name: str):
         docs = self.llamaIndexParser.load_data(pdf_file)
         for doc in docs:
-            doc.metadata.update({'filepath': pdf_file})
+            doc.metadata.update({'filepath': file_name})
         self.resumeDocuments.append(docs)
 
     def create_llamacloud_pipeline(self, data_sink_id=None):

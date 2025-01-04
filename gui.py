@@ -33,7 +33,7 @@ async def main():
                 progress_bar.progress(progress)
 
                 st.write(f"📄 Processing: {pdffile.name}")
-                await resumeAI.indexPdfFile(temp_path)
+                await resumeAI.indexPdfFile(temp_path, pdffile.name)
                 os.unlink(temp_path)
 
             progress_bar.empty()
