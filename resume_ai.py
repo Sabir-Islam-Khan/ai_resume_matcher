@@ -297,7 +297,7 @@ def main():
         nodes = await candidates_retriever_from_query(query)
         print(get_candidates_file_paths(nodes))
 
-        job_description_file_path = './job_description.pdf'
+        job_description_file_path = 'test_data/job_description.pdf'
 
         job_description_document = parse_files([job_description_file_path])
 

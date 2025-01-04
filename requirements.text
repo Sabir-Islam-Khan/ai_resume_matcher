@@ -1,24 +1,6 @@
-!pip install -U llama-index llama-index-indices-managed-llama-cloud llama-parse llama-cloud python-dotenv
-
-
-## for windows using wget 
-
-# Download the sampled data
-!wget --content-disposition "https://www.dropbox.com/scl/fo/v1mn1rxqz2ifqtx009owh/APHC7xPTQ7BiRZv0BKZ7cag?rlkey=rh09o73172vzifjqlsmw4fhmo&st=v220giff&dl=1"
-
-# make a directory to store the data
-!mkdir -p "./sampled_data"
-
-# unzip the data
-!unzip sampled_data.zip -d "./sampled_data"
-
-# Download the job description file
-!wget -O job_description.pdf "https://www.dropbox.com/scl/fi/b1djiczj6vy8s6h4isvmr/job_description.pdf?rlkey=drpkd2exj8edkuw1f0evhvqfx&st=2i2wb801&dl=1"
-
-
-
-## for mac using Curl 
-
-curl -L -O "https://www.dropbox.com/scl/fo/v1mn1rxqz2ifqtx009owh/APHC7xPTQ7BiRZv0BKZ7cag?rlkey=rh09o73172vzifjqlsmw4fhmo&st=v220giff&dl=1"
-
-curl -L -o job_description.pdf "https://www.dropbox.com/scl/fi/b1djiczj6vy8s6h4isvmr/job_description.pdf?rlkey=drpkd2exj8edkuw1f0evhvqfx&st=2i2wb801&dl=1"
+llama-index
+llama-index-indices-managed-llama-cloud
+llama-parse
+llama-cloud
+python-dotenv
+streamlit
