@@ -2,6 +2,7 @@ import os
 import nest_asyncio
 from llama_parse import LlamaParse
 from llama_cloud.client import LlamaCloud
+from dotenv import load_dotenv
 from llama_parse import LlamaParse
 from pathlib import Path
 from llama_index.core import Document
@@ -21,6 +22,8 @@ from llama_index.core.vector_stores import (
 )
 from metadata import Metadata
 
+load_dotenv()
+
 
 class ResumeAI:
     llamaIndexParser: LlamaParse = None
@@ -39,8 +42,8 @@ class ResumeAI:
     orgId: str = "9eea158a-7ba5-49e8-bff7-3c060289e5f6"
     pipelineName: str = "resume_matching"
 
-    openAIKey: str = ""
-    llamaIndexKey: str = ""
+    openAIKey: str = os.getenv('OPENAI_API_KEY')
+    llamaIndexKey: str = os.getenv('LLAMA_CLOUD_API_KEY')
 
     llamaIndexCloud = llamaIndexCloud = LlamaCloudIndex(
         name=pipelineName,

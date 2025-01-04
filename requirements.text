@@ -1,6 +1,1 @@
-llama-index
-llama-index-indices-managed-llama-cloud
-llama-parse
-llama-cloud
-python-dotenv
-streamlit
+pip install llama-index llama-index-indices-managed-llama-cloud llama-parse llama-cloud python-dotenv streamlit
