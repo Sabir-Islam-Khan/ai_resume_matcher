@@ -1,0 +1,1 @@
+!pip install -U llama-index llama-index-indices-managed-llama-cloud llama-parse llama-cloud python-dotenv
