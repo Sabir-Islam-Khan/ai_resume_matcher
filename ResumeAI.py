@@ -40,17 +40,10 @@ class ResumeAI:
     llm = OpenAI(model='gpt-4o-mini')
 
     orgId: str = "9eea158a-7ba5-49e8-bff7-3c060289e5f6"
-    pipelineName: str = "resume_matching"
+    pipelineName: str = "resume_matching_v_2"
 
     openAIKey: str = os.getenv('OPENAI_API_KEY')
     llamaIndexKey: str = os.getenv('LLAMA_CLOUD_API_KEY')
-
-    llamaIndexCloud = llamaIndexCloud = LlamaCloudIndex(
-        name=pipelineName,
-        project_name="Default",
-        organization_id=orgId,
-        api_key=llamaIndexKey,
-    )
 
     def __init__(self):
         nest_asyncio.apply()
@@ -70,8 +63,7 @@ class ResumeAI:
         self.resumeDocuments.append(docs)
 
     def create_llamacloud_pipeline(self, data_sink_id=None):
-        print(self.llamaIndexKey)
-        print(self.openAIKey)
+        print("create_llamacloud_pipeline")
 
         embedding_config = {
             'type': 'OPENAI_EMBEDDING',
@@ -176,6 +168,13 @@ class ResumeAI:
     async def candidates_retriever_from_query(self, query: str):
         print(f"> User query string: {query}")
 
+        llamaIndexCloud = LlamaCloudIndex(
+            name=self.pipelineName,
+            project_name="Default",
+            organization_id=self.orgId,
+            api_key=self.llamaIndexKey,
+        )
+
         metadata_info = await self.get_query_metadata(query)
         filters = MetadataFilters(
             filters=[
@@ -189,7 +188,7 @@ class ResumeAI:
             condition=FilterCondition.OR
         )
 
-        retriever = self.llamaIndexCloud.as_retriever(
+        retriever = llamaIndexCloud.as_retriever(
             retrieval_mode="chunks",
             metadata_filters=filters,
         )
