@@ -204,6 +204,13 @@ class ResumeAI:
         return list(set(file_paths))
 
     async def candidates_retriever_from_jd(self, job_description: str):
+        llamaIndexCloud = LlamaCloudIndex(
+            name=self.pipelineName,
+            project_name="Default",
+            organization_id=self.orgId,
+            api_key=self.llamaIndexKey,
+        )
+
         metadata_info = await self.get_metadata(job_description)
         filters = MetadataFilters(
             filters=[
@@ -216,7 +223,7 @@ class ResumeAI:
             ],
             condition=FilterCondition.OR
         )
-        retriever = self.llamaIndexCloud.as_retriever(
+        retriever = llamaIndexCloud.as_retriever(
             retrieval_mode="chunks",
             metadata_filters=filters,
         )
